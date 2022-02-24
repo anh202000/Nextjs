@@ -3,14 +3,22 @@ import { useState } from 'react';
 
 const Login = () => {
 	const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+	const [colorBg, setColorBg] = useState('bg-blue-900');
+
+	const onClickNight = () => {
+		setColorBg('bg-gray-800')
+	}
+	const onClickDay = () => {
+		setColorBg('bg-blue-900')
+	}
 
 	const handleSignUp = () => {
 		const object = {
-			'name' : name,
-			'email' : email,
-			'password' : password,
+			'name': name,
+			'email': email,
+			'password': password,
 		}
 		// TODO REACT HANDLE SIGN UP
 		Router.push('/')
@@ -18,11 +26,12 @@ const Login = () => {
 
 	return (
 		<div className="min-h-screen flex items-stretch text-white ">
-			<div className="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center bg-gradient-to-r from-cyan-500 to-blue-500">
+			<div className="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center from-cyan-500 to-blue-500 bg-[url('https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80')]">
 				<div className="absolute bg-black opacity-60 inset-0 z-0"></div>
-				<div className="w-full px-24 z-10">
-					<h1 className="text-5xl font-bold text-left tracking-wide">Keep it special</h1>
-					<p className="text-3xl my-4">Capture your personal memory in unique way, anywhere.</p>
+				<div className="w-full px-24 z-10 hover:animate-bounce">
+					<span className="animate-ping absolute inline-flex h-20 w-20 rounded-full bg-sky-400 opacity-75"></span>
+					<h1 className="text-5xl font-bold text-left tracking-wide">University Smart System</h1>
+					<p className="text-3xl my-4">Keep it special, capture your personal memory in unique way, anywhere.</p>
 				</div>
 				<div className="bottom-0 absolute p-4 text-center right-0 left-0 flex justify-center space-x-4">
 					<span>
@@ -41,9 +50,27 @@ const Login = () => {
 					<div className="absolute bg-black opacity-60 inset-0 z-0"></div>
 				</div>
 				<div className="w-full py-6 z-20">
-					<h1 className="my-6">
-						<svg viewBox="0 0 247 31" className="w-auto h-7 sm:h-8 inline-flex fill-blue-500"><path fill="rgba(99,102,241, .8)" fill-rule="evenodd" clip-rule="evenodd" d="M25.517 0C18.712 0 14.46 3.382 12.758 10.146c2.552-3.382 5.529-4.65 8.931-3.805 1.941.482 3.329 1.882 4.864 3.432 2.502 2.524 5.398 5.445 11.722 5.445 6.804 0 11.057-3.382 12.758-10.145-2.551 3.382-5.528 4.65-8.93 3.804-1.942-.482-3.33-1.882-4.865-3.431C34.736 2.92 31.841 0 25.517 0zM12.758 15.218C5.954 15.218 1.701 18.6 0 25.364c2.552-3.382 5.529-4.65 8.93-3.805 1.942.482 3.33 1.882 4.865 3.432 2.502 2.524 5.397 5.445 11.722 5.445 6.804 0 11.057-3.381 12.758-10.145-2.552 3.382-5.529 4.65-8.931 3.805-1.941-.483-3.329-1.883-4.864-3.432-2.502-2.524-5.398-5.446-11.722-5.446z"></path><path fill="#fff" fill-rule="evenodd" clip-rule="evenodd" d="M76.546 12.825h-4.453v8.567c0 2.285 1.508 2.249 4.453 2.106v3.463c-5.962.714-8.332-.928-8.332-5.569v-8.567H64.91V9.112h3.304V4.318l3.879-1.143v5.937h4.453v3.713zM93.52 9.112h3.878v17.849h-3.878v-2.57c-1.365 1.891-3.484 3.034-6.285 3.034-4.884 0-8.942-4.105-8.942-9.389 0-5.318 4.058-9.388 8.942-9.388 2.801 0 4.92 1.142 6.285 2.999V9.112zm-5.674 14.636c3.232 0 5.674-2.392 5.674-5.712s-2.442-5.711-5.674-5.711-5.674 2.392-5.674 5.711c0 3.32 2.442 5.712 5.674 5.712zm16.016-17.313c-1.364 0-2.477-1.142-2.477-2.463a2.475 2.475 0 012.477-2.463 2.475 2.475 0 012.478 2.463c0 1.32-1.113 2.463-2.478 2.463zm-1.939 20.526V9.112h3.879v17.849h-3.879zm8.368 0V.9h3.878v26.06h-3.878zm29.053-17.849h4.094l-5.638 17.849h-3.807l-3.735-12.03-3.771 12.03h-3.806l-5.639-17.849h4.094l3.484 12.315 3.771-12.315h3.699l3.734 12.315 3.52-12.315zm8.906-2.677c-1.365 0-2.478-1.142-2.478-2.463a2.475 2.475 0 012.478-2.463 2.475 2.475 0 012.478 2.463c0 1.32-1.113 2.463-2.478 2.463zm-1.939 20.526V9.112h3.878v17.849h-3.878zm17.812-18.313c4.022 0 6.895 2.713 6.895 7.354V26.96h-3.878V16.394c0-2.713-1.58-4.14-4.022-4.14-2.55 0-4.561 1.499-4.561 5.14v9.567h-3.879V9.112h3.879v2.285c1.185-1.856 3.124-2.749 5.566-2.749zm25.282-6.675h3.879V26.96h-3.879v-2.57c-1.364 1.892-3.483 3.034-6.284 3.034-4.884 0-8.942-4.105-8.942-9.389 0-5.318 4.058-9.388 8.942-9.388 2.801 0 4.92 1.142 6.284 2.999V1.973zm-5.674 21.775c3.232 0 5.674-2.392 5.674-5.712s-2.442-5.711-5.674-5.711-5.674 2.392-5.674 5.711c0 3.32 2.442 5.712 5.674 5.712zm22.553 3.677c-5.423 0-9.481-4.105-9.481-9.389 0-5.318 4.058-9.388 9.481-9.388 3.519 0 6.572 1.82 8.008 4.605l-3.34 1.928c-.79-1.678-2.549-2.749-4.704-2.749-3.16 0-5.566 2.392-5.566 5.604 0 3.213 2.406 5.605 5.566 5.605 2.155 0 3.914-1.107 4.776-2.749l3.34 1.892c-1.508 2.82-4.561 4.64-8.08 4.64zm14.472-13.387c0 3.249 9.661 1.285 9.661 7.89 0 3.57-3.125 5.497-7.003 5.497-3.591 0-6.177-1.607-7.326-4.177l3.34-1.927c.574 1.606 2.011 2.57 3.986 2.57 1.724 0 3.052-.571 3.052-2 0-3.176-9.66-1.391-9.66-7.781 0-3.356 2.909-5.462 6.572-5.462 2.945 0 5.387 1.357 6.644 3.713l-3.268 1.82c-.647-1.392-1.904-2.035-3.376-2.035-1.401 0-2.622.607-2.622 1.892zm16.556 0c0 3.249 9.66 1.285 9.66 7.89 0 3.57-3.124 5.497-7.003 5.497-3.591 0-6.176-1.607-7.326-4.177l3.34-1.927c.575 1.606 2.011 2.57 3.986 2.57 1.724 0 3.053-.571 3.053-2 0-3.176-9.66-1.391-9.66-7.781 0-3.356 2.908-5.462 6.572-5.462 2.944 0 5.386 1.357 6.643 3.713l-3.268 1.82c-.646-1.392-1.903-2.035-3.375-2.035-1.401 0-2.622.607-2.622 1.892z"></path></svg>
-					</h1>
+					<div className='flex absolute top-0 right-0 pd-6'>
+						<div onClick={onClickDay} className='text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5'>
+							<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+								<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+							</svg>
+						</div>
+
+						<div onClick={onClickNight} className='text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5'>
+							<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+							</svg>
+						</div>
+					</div>
+					<svg xmlns="http://www.w3.org/2000/svg" className="h-8 w- stroke-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path d="M12 14l9-5-9-5-9 5 9 5z" />
+						<path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+					</svg>
+					<div className='animate-bounce'>
+						<p className="text-3xl">Wellcome to System</p>
+					</div>
 					<div className="py-6 space-x-2">
 						<span className="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">f</span>
 						<span className="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">G+</span>
@@ -54,13 +81,16 @@ const Login = () => {
 					</p>
 					<form action="" className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
 						<div className="pb-2 pt-4">
-							<input onChange={e => setName(e.target.value)} type="name" name="name" id="name" placeholder="UserName" className="block w-full p-4 text-lg rounded-sm bg-black" />
+							<input onChange={e => setName(e.target.value)} type="name" name="name" id="name" placeholder="UserName" className="text-gray-800 mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      						focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" />
 						</div>
 						<div className="pb-2 pt-4">
-							<input onChange={e => setEmail(e.target.value)} type="email" name="email" id="email" placeholder="Email" className="block w-full p-4 text-lg rounded-sm bg-black" />
+							<input onChange={e => setEmail(e.target.value)} type="email" name="email" id="email" placeholder="Email" className="text-gray-800 mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      						focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" />
 						</div>
 						<div className="pb-2 pt-4">
-							<input onChange={e => setPassword(e.target.value)} className="block w-full p-4 text-lg rounded-sm bg-black" type="password" name="password" id="password" placeholder="Password" />
+							<input onChange={e => setPassword(e.target.value)} className="text-gray-800 mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      						focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" type="password" name="password" id="password" placeholder="Password" />
 						</div>
 						<div className="text-right text-gray-400 hover:underline hover:text-gray-100">
 							<a href="#">Forgot your password?</a>
