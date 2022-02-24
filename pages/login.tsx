@@ -26,7 +26,7 @@ const Login: NextPage = ({ providers }: any) => {
 					className="bg-[#18D860] text-white p-5 rounded-full"
 					onClick={() => signIn(b, { callbackUrl: '/' })}
 				>
-					Login with {a}
+					Login with 1{a}
 				</button>
 			</div>
 		</div>
