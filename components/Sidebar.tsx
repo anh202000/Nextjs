@@ -6,9 +6,8 @@ import {
 	HeartIcon,
 	RssIcon,
 } from '@heroicons/react/outline'
-import { NextPage } from 'next'
 
-const Sidebar: NextPage = () => {
+const Sidebar = () => {
 	return (
 		<div className="text-gray-500 p-5 text-sm border-r">
 			<div className="space-y-4">
