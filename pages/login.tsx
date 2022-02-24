@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
+import Router from 'next/router';
 import { useState } from 'react';
 
-const Login: NextPage = () => {
+const Login = () => {
 	const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,11 +12,12 @@ const Login: NextPage = () => {
 			'email' : email,
 			'password' : password,
 		}
-		console.log(object);
+		// TODO REACT HANDLE SIGN UP
+		Router.push('/')
 	}
 
 	return (
-		<section className="min-h-screen flex items-stretch text-white ">
+		<div className="min-h-screen flex items-stretch text-white ">
 			<div className="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center bg-gradient-to-r from-cyan-500 to-blue-500">
 				<div className="absolute bg-black opacity-60 inset-0 z-0"></div>
 				<div className="w-full px-24 z-10">
@@ -65,7 +66,7 @@ const Login: NextPage = () => {
 							<a href="#">Forgot your password?</a>
 						</div>
 						<div className="px-4 pb-2 pt-4">
-							<button onClick={handleSignUp} className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">sign in</button>
+							<button type="button" onClick={handleSignUp} className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">sign in</button>
 						</div>
 
 						<div className="p-4 text-center right-0 left-0 flex justify-center space-x-4 mt-16 lg:hidden ">
@@ -82,7 +83,7 @@ const Login: NextPage = () => {
 					</form>
 				</div>
 			</div>
-		</section>
+		</div>
 	)
 }
 
