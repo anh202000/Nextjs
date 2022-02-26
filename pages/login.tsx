@@ -1,5 +1,6 @@
 import Router from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
 	const [name, setName] = useState('');
@@ -14,14 +15,22 @@ const Login = () => {
 		setColorBg('bg-blue-900')
 	}
 
-	const handleSignUp = () => {
+	const [post, setPost] = useState<any>();
+	const baseURL = 'http://localhost:5000/api/register'
+
+	const handleSignUp = async () => {
 		const object = {
-			'name': name,
+			'fullname': name,
 			'email': email,
 			'password': password,
 		}
 		// TODO REACT HANDLE SIGN UP
-		Router.push('/')
+		const data: any = axios.post(baseURL, object).then((response) => {
+		});
+		if (data?.status === 200) {
+			Router.push('/')
+		}
+		console.log(post?.status)
 	}
 
 	return (
