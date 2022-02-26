@@ -1,12 +1,25 @@
 import Router from 'next/router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import PopupRegister from '../components/Popup/Register';
+import { When } from 'react-if';
+import PopupForgotPassWord from '../components/Popup/ForgotPassWord';
 
 const Login = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [colorBg, setColorBg] = useState('bg-blue-900');
+
+	const [showPopupRegister, setShowPopupRegister] = useState(false)
+	const onShowPopupRegister = () => {
+		setShowPopupRegister(!showPopupRegister)
+	}
+
+	const [showPopupForgotPasswork, setShowPopupForgotPasswork] = useState(false)
+	const onShowPopupForgotPasswork = () => {
+		setShowPopupForgotPasswork(!showPopupForgotPasswork)
+	}
 
 	const onClickNight = () => {
 		setColorBg('bg-gray-800')
@@ -15,22 +28,21 @@ const Login = () => {
 		setColorBg('bg-blue-900')
 	}
 
-	const [post, setPost] = useState<any>();
 	const baseURL = 'http://localhost:5000/api/register'
 
-	const handleSignUp = async () => {
+	const handleSignIn = async () => {
 		const object = {
 			'fullname': name,
 			'email': email,
 			'password': password,
 		}
-		// TODO REACT HANDLE SIGN UP
-		const data: any = axios.post(baseURL, object).then((response) => {
-		});
-		if (data?.status === 200) {
-			Router.push('/')
-		}
-		console.log(post?.status)
+		// TODO REACT HANDLE SIGN IN
+		// const data: any = axios.post(baseURL, object).then((response) => {
+		// });
+		// if (data?.status === 200) {
+		// 	Router.push('/')
+		// }
+		// console.log(data?.status)
 	}
 
 	return (
@@ -54,6 +66,10 @@ const Login = () => {
 					</span>
 				</div>
 			</div>
+
+				<PopupRegister isShow={showPopupRegister} onShowPopupRegister={onShowPopupRegister}/>
+				<PopupForgotPassWord isShow={showPopupForgotPasswork} onShowPopupForgotPasswork={onShowPopupForgotPasswork}/>
+
 			<div className="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0 bg-blue-900">
 				<div className="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center bg-gradient-to-r from-cyan-500 to-blue-500">
 					<div className="absolute bg-black opacity-60 inset-0 z-0"></div>
@@ -85,9 +101,12 @@ const Login = () => {
 						<span className="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">G+</span>
 						<span className="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">in</span>
 					</div>
-					<p className="text-gray-100">
+					<span onClick={onShowPopupRegister} className="text-gray-100 hover:text-gray-100 hover:underline mr-2 bg-indigo-500 hover:bg-indigo-600 rounded-lg px-2 cursor-pointer">
+						Sign up
+					</span>
+					<span className="text-gray-100">
 						or use email your account
-					</p>
+					</span>
 					<form action="" className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
 						<div className="pb-2 pt-4">
 							<input onChange={e => setName(e.target.value)} type="name" name="name" id="name" placeholder="UserName" className="text-gray-800 mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
@@ -101,11 +120,11 @@ const Login = () => {
 							<input onChange={e => setPassword(e.target.value)} className="text-gray-800 mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       						focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" type="password" name="password" id="password" placeholder="Password" />
 						</div>
-						<div className="text-right text-gray-400 hover:underline hover:text-gray-100">
-							<a href="#">Forgot your password?</a>
+						<div className="text-right text-gray-400 hover:underline hover:text-gray-100 cursor-pointer">
+							<a onClick={onShowPopupForgotPasswork}>Forgot your password?</a>
 						</div>
 						<div className="px-4 pb-2 pt-4">
-							<button type="button" onClick={handleSignUp} className="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">sign in</button>
+							<button type="button" onClick={handleSignIn} className="block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none cursor-pointer">Sign in</button>
 						</div>
 
 						<div className="p-4 text-center right-0 left-0 flex justify-center space-x-4 mt-16 lg:hidden ">
