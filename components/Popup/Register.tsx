@@ -24,8 +24,9 @@ const PopupRegister: FC<Iprop> = ({ onShowPopupRegister, isShow }) => {
 		// TODO REACT HANDLE SIGN UP
 		const data: any = axios.post(baseURL, object).then((response) => {
 		});
-		if (data?.status === 200) {
-			Router.push('/')
+		if (data?.status !== 200) {
+			Router.push('/login')
+            console.log("Looks like there was a problem " + data?.status)
 		}
 		console.log(data?.status)
 	}

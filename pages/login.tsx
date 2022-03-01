@@ -6,7 +6,6 @@ import { When } from 'react-if';
 import PopupForgotPassWord from '../components/Popup/ForgotPassWord';
 
 const Login = () => {
-	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [colorBg, setColorBg] = useState('bg-blue-900');
@@ -28,23 +27,23 @@ const Login = () => {
 		setColorBg('bg-blue-900')
 	}
 
-	const baseURL = 'http://localhost:5000/api/register'
+	const baseURL = 'http://localhost:5000/api/login'
 
-	const handleSignIn = async () => {
-		const object = {
-			'fullname': name,
-			'email': email,
-			'password': password,
+		const handleSignIn = async () => {
+			const object = {
+				'email': email,
+				'password': password,
+			}
+			// TODO REACT HANDLE SIGN IN
+			const data: any = axios.post(baseURL, object).then((response) => {
+				if (response?.status === 200) {
+					Router.push('/')
+				}
+				console.log(response)
+			});
+		
+
 		}
-		// TODO REACT HANDLE SIGN IN
-		// const data: any = axios.post(baseURL, object).then((response) => {
-		// });
-		// if (data?.status === 200) {
-		// 	Router.push('/')
-		// }
-		// console.log(data?.status)
-	}
-
 	return (
 		<div className="min-h-screen flex items-stretch text-white ">
 			<div className="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center from-cyan-500 to-blue-500 bg-[url('https://images.unsplash.com/photo-1577495508048-b635879837f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80')]">
@@ -108,10 +107,6 @@ const Login = () => {
 						or use email your account
 					</span>
 					<form action="" className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
-						<div className="pb-2 pt-4">
-							<input onChange={e => setName(e.target.value)} type="name" name="name" id="name" placeholder="UserName" className="text-gray-800 mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
-      						focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" />
-						</div>
 						<div className="pb-2 pt-4">
 							<input onChange={e => setEmail(e.target.value)} type="email" name="email" id="email" placeholder="Email" className="text-gray-800 mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
       						focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" />
