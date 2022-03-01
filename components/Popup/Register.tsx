@@ -22,13 +22,12 @@ const PopupRegister: FC<Iprop> = ({ onShowPopupRegister, isShow }) => {
 			'password': password,
 		}
 		// TODO REACT HANDLE SIGN UP
-		const data: any = axios.post(baseURL, object).then((response) => {
-		});
-		if (data?.status !== 200) {
-			Router.push('/login')
-            console.log("Looks like there was a problem " + data?.status)
-		}
-		console.log(data?.status)
+        const data: any = axios.post(baseURL, object).then((response) => {
+            if (response?.status === 200) {
+                Router.push('/')
+            }
+            console.log(response)
+        });
 	}
     return (
         <When condition={isShow}>
